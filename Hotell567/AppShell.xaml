@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Name="Shell"
+    x:Class="Hotell567.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Hotell567.MVVM"
+    FlyoutBehavior="Disabled"
+    BackgroundColor="{DynamicResource PrimaryBackground}">
+
+
+    <Shell.Resources>
+        <Style x:Key="BasePageHeaderStyle" TargetType="Tab">
+            <Setter Property="Shell.BackgroundColor" Value="{DynamicResource Secondary}" />
+            <Setter Property="Shell.TitleColor" Value="{DynamicResource DarkTextColor}"/>
+            <Setter Property="Shell.TabBarBackgroundColor" Value="#66e0d6"/>
+            <Setter Property="Shell.TabBarUnselectedColor" Value="DarkGray"/>
+            <Setter Property="Shell.TabBarForegroundColor" Value="Black"/>
+        </Style>
+    </Shell.Resources>
+
+    <TabBar>
+        <Tab Title="Home" Style="{DynamicResource BasePageHeaderStyle}" Route="HomePage">
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}"/>
+        </Tab>
+        <Tab Title="Login" Style="{DynamicResource BasePageHeaderStyle}" Route="LoginPage" x:Name="loginTab">
+            <ShellContent ContentTemplate="{DataTemplate local:LoginPage}"/>
+        </Tab>
+        <Tab Title="Rooms" Style="{DynamicResource BasePageHeaderStyle}" Route="RoomsPage">
+            <ShellContent ContentTemplate="{DataTemplate local:RoomsPage}"/>
+        </Tab>
+        <Tab Title="Admin" Style="{DynamicResource BasePageHeaderStyle}" Route="AdminPage" x:Name="adminTab" IsVisible="False">
+            <ShellContent ContentTemplate="{DataTemplate local:AdminPage}"/>
+        </Tab>
+        <Tab Title="Account" Style="{DynamicResource BasePageHeaderStyle}" Route="AccountSettings" x:Name="accountTab" IsVisible="False">
+            <ShellContent ContentTemplate="{DataTemplate local:AccountSettings}"/>
+        </Tab>
+        <Tab Title="Information" Style="{DynamicResource BasePageHeaderStyle}" Route="InformationPage">
+            <ShellContent ContentTemplate="{DataTemplate local:InformationPage}"/>
+        </Tab>
+    </TabBar>
+</Shell>
+

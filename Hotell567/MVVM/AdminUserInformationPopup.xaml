@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:Popup x:Class="Hotell567.MVVM.AdminUserInformationPopup"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             CanBeDismissedByTappingOutsideOfPopup="True"
+             Color="{DynamicResource Secondary}"
+             Size="700, 220">
+
+    <VerticalStackLayout Padding="5"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Fill">
+        <Frame Style="{DynamicResource BaseFrameStyle}" VerticalOptions="Fill">
+
+            <VerticalStackLayout Padding="5">
+                <Label Style="{DynamicResource MediumLabel}" Text="User Details"/>
+                <HorizontalStackLayout Spacing="20">
+                    <VerticalStackLayout HorizontalOptions="Start">
+                        <Label Style="{DynamicResource SmallLabel}" FontSize="16" x:Name="UserIdLabel" Text="user_id"/>
+                        <Label Style="{DynamicResource SmallLabel}" FontSize="16" x:Name="FirstNameLabel" Text="first_name"/>
+                        <Label Style="{DynamicResource SmallLabel}" FontSize="16" x:Name="EmailLabel" Text="email"/>
+                        <Label Style="{DynamicResource SmallLabel}" FontSize="16" x:Name="AddressLabel" Text="address_line_1"/>
+                        <Label Style="{DynamicResource SmallLabel}" FontSize="16" x:Name="StateLabel" Text="state"/>
+                        <Label Style="{DynamicResource SmallLabel}" FontSize="16" x:Name="CountryLabel" Text="country"/>
+                    </VerticalStackLayout>
+                    <VerticalStackLayout HorizontalOptions="End">
+                        <Label Style="{DynamicResource SmallLabel}" FontSize="16" x:Name="UserNameLabel" Text="username"/>
+                        <Label Style="{DynamicResource SmallLabel}" FontSize="16" x:Name="LastNameLabel" Text="last_name"/>
+                        <Label Style="{DynamicResource SmallLabel}" FontSize="16" x:Name="PhoneNumberLabel" Text="phone_number"/>
+                        <Label Style="{DynamicResource SmallLabel}" FontSize="16" x:Name="CityLabel" Text="city"/>
+                        <Label Style="{DynamicResource SmallLabel}" FontSize="16" x:Name="PostalCodeLabel" Text="postal_code"/>
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Frame>
+    </VerticalStackLayout>
+</views:Popup>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Hotell567.MVVM.InformationPage"
+             Title="Information"
+             BackgroundColor="{DynamicResource PrimaryBackground}">
+    <Frame Style="{DynamicResource BaseFrameStyle}" WidthRequest="700" Margin="0, 5, 0, 50" MaximumHeightRequest="600">
+            <VerticalStackLayout VerticalOptions="Start">
+                <Image Source="mc_hotel.jpg"
+                       Aspect="AspectFill"
+                       MaximumHeightRequest="350"/>
+
+                <VerticalStackLayout Padding="15" Spacing="6" HorizontalOptions="Center">
+                    <Label Text="Granada Luxury Belek"
+                           Style="{DynamicResource MediumLabel}"
+                           FontAttributes="Bold"/>
+                <Label Text="  Our Hotels have been designed to leave you with unforgettable holiday memories with its magnificent pools, entertainment venues, and unique infrastructure laid on an area of 100.000 m2 in Belek, the pearl of the Mediterranean." 
+                           Style="{DynamicResource SmallLabel}"
+                           FontSize="16"/>
+                <Label Text="Belek Mah.Cumhuriyet Cad.No:7/102, Belek / Serik / Antalya / Turkey"
+                           Style="{DynamicResource SmallLabel}"
+                           FontAttributes="Italic" 
+                           HorizontalOptions="Center"/>
+                <Label Text="+90 242 711 07 07" 
+                           Style="{DynamicResource SmallLabel}"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </Frame>
+</ContentPage>

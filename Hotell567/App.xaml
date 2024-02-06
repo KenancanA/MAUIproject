@@ -1,0 +1,132 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Hotell567"
+             x:Class="Hotell567.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Color x:Key="Primary">#FCECCC</Color>
+            <Color x:Key="PrimaryBackground">#FEF8EC</Color>
+            <Color x:Key="Secondary">#FCBC04</Color>
+            <Color x:Key="Third">#1cacf4</Color>
+
+            <Color x:Key="DarkTextColor">Black</Color>
+            <Color x:Key="LightTextColor">White</Color>
+            <Color x:Key="PlaceholderTextColor">DarkGray</Color>
+
+            <x:Double x:Key="MicroFontSize">12</x:Double>
+            <x:Double x:Key="DefaultFontSize">22</x:Double>
+            <x:Double x:Key="MediumFontSize">32</x:Double>
+            <x:Double x:Key="LargeFontSize">98</x:Double>
+
+
+            
+            <Style x:Key="baseApplicationStyle" TargetType="View">
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Start"/>
+                <Setter Property="BackgroundColor" Value="{DynamicResource Primary}"/>
+            </Style>
+
+            
+            <Style x:Key="BaseTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{DynamicResource DarkTextColor}"/>
+                <Setter Property="FontSize" Value="{StaticResource DefaultFontSize}"/>
+                <Setter Property="HorizontalOptions" Value="Start"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+
+            <Style x:Key="MicroLabel" BasedOn="{StaticResource BaseTextStyle}" TargetType="Label">
+                <Setter Property="FontSize" Value="{DynamicResource MicroFontSize}"/>
+            </Style>
+
+            <Style x:Key="SmallLabel" BasedOn="{StaticResource BaseTextStyle}" TargetType="Label">
+                <Setter Property="FontSize" Value="{DynamicResource DefaultFontSize}"/>
+            </Style>
+
+            <Style x:Key="MediumLabel" BasedOn="{StaticResource BaseTextStyle}" TargetType="Label">
+                <Setter Property="FontSize" Value="{DynamicResource MediumFontSize}"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+
+            <Style x:Key="LargeLabel" BasedOn="{StaticResource BaseTextStyle}" TargetType="Label">
+                <Setter Property="FontSize" Value="{DynamicResource LargeFontSize}"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+
+            <Style x:Key="AccountLabel" BasedOn="{StaticResource SmallLabel}" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
+            
+            <Style x:Key="BaseButtonStyle" TargetType="Button" BasedOn="{StaticResource baseApplicationStyle}">
+                <Setter Property="BackgroundColor" Value="{DynamicResource Secondary}"/>
+                <Setter Property="FontSize" Value="{DynamicResource DefaultFontSize}"/>
+                <Setter Property="TextColor" Value="{DynamicResource DarkTextColor}"/>
+            </Style>
+
+            <Style x:Key="SmallButtonStyle" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+
+            
+            <Style x:Key="BaseBoxStyle" TargetType="BoxView" BasedOn="{StaticResource baseApplicationStyle}">
+                <Setter Property="BackgroundColor" Value="{DynamicResource Secondary}"/>
+            </Style>
+
+            
+            <Style x:Key="BaseEntryStyle" TargetType="Entry" BasedOn="{StaticResource baseApplicationStyle}">
+                <Setter Property="PlaceholderColor" Value="{StaticResource PlaceholderTextColor}"/>
+                <Setter Property="HorizontalTextAlignment" Value="Start"/>
+                <Setter Property="FontSize" Value="{DynamicResource DefaultFontSize}"/>
+                <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryBackground}"/>
+                <Setter Property="TextColor" Value="{DynamicResource DarkTextColor}"/>
+            </Style>
+
+            <Style x:Key="AccountEntryStyle" TargetType="Entry" BasedOn="{StaticResource BaseEntryStyle}">
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Fill"/>
+            </Style>
+
+            
+            <Style x:Key="BaseFrameStyle" TargetType="Frame">
+                <Setter Property="BorderColor" Value="{DynamicResource Secondary}"/>
+                <Setter Property="HasShadow" Value="{OnPlatform MacCatalyst=false, Default=true}"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="Background" Value="{DynamicResource Primary}"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="IsClippedToBounds" Value="True"/>
+            </Style>
+
+            
+            <Style x:Key="BaseBorderStyle" TargetType="Border">
+                <Setter Property="Stroke" Value="{DynamicResource Secondary}"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="Background" Value="{DynamicResource Primary}"/>
+            </Style>
+
+            
+            <Style x:Key="BaseDatePickerStyle" TargetType="DatePicker">
+                <Setter Property="Background" Value="{DynamicResource Secondary}"/>
+                <Setter Property="FontSize" Value="{DynamicResource MediumFontSize}"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="TextColor" Value="{DynamicResource DarkTextColor}"/>
+                <Setter Property="Format" Value="dd/MM/yy"/>
+            </Style>
+
+            
+            <Style x:Key="BasePickerStyle" TargetType="Picker">
+                <Setter Property="BackgroundColor" Value="{DynamicResource Secondary}"/>
+                <Setter Property="FontSize" Value="{DynamicResource DefaultFontSize}"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="TextColor" Value="{DynamicResource DarkTextColor}"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

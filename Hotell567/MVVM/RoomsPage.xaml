@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    x:Class="Hotell567.MVVM.RoomsPage" 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:data="clr-namespace:Hotell567.Data"
+    xmlns:models="clr-namespace:Hotell567.Models"
+    BackgroundColor="{DynamicResource PrimaryBackground}"
+    x:DataType="data:RoomsViewModel"
+    Title="{Binding Title}">
+
+    <Grid ColumnDefinitions="310, *"
+          ColumnSpacing="10"
+          RowDefinitions="*, *"
+          RowSpacing="0"
+          Margin="10, 10, 150, 10">
+
+        <Frame Style="{DynamicResource BaseFrameStyle}"
+               HorizontalOptions="Fill"
+               Margin="5, 5, 0, 5"
+               WidthRequest="275"
+               Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
+               BackgroundColor="#c8f2ec">
+            <VerticalStackLayout VerticalOptions="Start" Padding="5, 10, 10, 10">
+
+                <Button Text="Search rooms" 
+                        IsEnabled="{Binding IsNotBusy}"
+                        Style="{DynamicResource BaseButtonStyle}"
+                        Margin="10"
+                        WidthRequest="240"
+                        VerticalOptions="Start"
+                        HorizontalOptions="Center"
+                        Clicked="GetRooms"
+                        FontAttributes="Bold"
+                        BackgroundColor="#66e0d6"/>
+
+                <Grid ColumnDefinitions="Auto, Auto"
+                  ColumnSpacing="5"
+                  RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto"
+                  RowSpacing="5"
+                  HorizontalOptions="Center">
+
+                    <Label Style="{DynamicResource SmallLabel}" Grid.Column="0" Grid.ColumnSpan="2"
+                       Text="Room Type"/>
+
+                    <Picker x:Name="RoomTypePicker" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"
+                        Style="{DynamicResource BasePickerStyle}"
+                        BackgroundColor="{DynamicResource Secondary}"
+                        TextColor="Black"
+                        HorizontalOptions="Start"
+                        WidthRequest="250"
+                        SelectedItem="Any">
+                        <Picker.Items>
+                            <x:String>Any</x:String>
+                            <x:String>Single</x:String>
+                            <x:String>Double</x:String>
+                            <x:String>Twin</x:String>
+                            <x:String>Family</x:String>
+                            <x:String>Suite</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                    <Label Style="{DynamicResource SmallLabel}" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2"
+                           Text="Price range"/>
+
+                    <Entry x:Name="MinPrice" Grid.Column="0" Grid.Row="3"
+                           Style="{DynamicResource BaseEntryStyle}"
+                           BackgroundColor="#66e0d6"
+                           Placeholder="minimum"
+                           PlaceholderColor="Black"
+                           HorizontalOptions="Fill"/>
+                    <Entry x:Name="MaxPrice" Grid.Column="1" Grid.Row="3"
+                           Style="{DynamicResource BaseEntryStyle}"
+                           BackgroundColor="#66e0d6"
+                           Placeholder="maximum"
+                           PlaceholderColor="Black"
+                           HorizontalOptions="Fill"/>
+
+                    <Label Style="{DynamicResource SmallLabel}" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4"
+                           Text="Date range"/>
+
+                    <DatePicker x:Name="StartDate" Grid.Column="0" Grid.Row="5"
+                                Style="{DynamicResource BaseDatePickerStyle}"
+                                FontSize="{DynamicResource DefaultFontSize}"
+                                HorizontalOptions="Fill"
+                                HeightRequest="40"
+                                BackgroundColor="#66e0d6"/>
+                    <DatePicker x:Name="EndDate" Grid.Column="1" Grid.Row="5"
+                                Style="{DynamicResource BaseDatePickerStyle}"
+                                FontSize="{DynamicResource DefaultFontSize}"
+                                HorizontalOptions="Fill"
+                                HeightRequest="40"
+                                BackgroundColor="#66e0d6"/>
+                </Grid>
+            </VerticalStackLayout  >
+        </Frame>
+
+        <CollectionView
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            Grid.Column="1"
+            ItemsSource="{Binding Rooms}"
+            SelectionMode="None"
+            Margin="0,0,0,30">
+            <CollectionView.ItemTemplate >
+                <DataTemplate x:DataType="models:Room">
+                    <Grid Padding="10" HeightRequest="400" >
+                        <Frame HeightRequest="380" Style="{DynamicResource BaseFrameStyle}" VerticalOptions="Start">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type data:RoomsViewModel}}, Path=GoToDetailsCommand}"
+                                    CommandParameter="{Binding .}"/>
+                            </Frame.GestureRecognizers>
+
+                            <Grid Padding="0" ColumnDefinitions="300,400,*">
+                                <Image Aspect="AspectFill"
+                                       Source="{Binding room_image_name, StringFormat='{0}'}"/>
+
+                                <VerticalStackLayout
+                                    Grid.Column="1"
+                                    Padding="10"
+                                    VerticalOptions="Fill">
+                                    <Label Style="{DynamicResource MediumLabel}" 
+                                           Text="{Binding room_type}" 
+                                           HorizontalOptions="Start"
+                                           FontAttributes="Bold"/>
+                                    <Label Style="{DynamicResource SmallLabel}"
+                                           Text="{Binding room_number, StringFormat='Room number: {0}'}"/>
+                                    <Label Style="{DynamicResource SmallLabel}" 
+                                           Text="{Binding room_description}" />
+                                    <Label Style="{DynamicResource SmallLabel}"
+                                           Text="{Binding room_price_per_night, StringFormat='Price per night: {0}€' }"
+                                           Padding="0, 0, 0, 0"
+                                           VerticalOptions="End"/>
+                                </VerticalStackLayout>
+
+                                <Button Grid.Column="2"
+                                        Style="{DynamicResource BaseButtonStyle}"
+                                        Text="Book"
+                                        FontSize="{DynamicResource MediumFontSize}"
+                                        VerticalOptions="Fill"
+                                        HorizontalOptions="Fill"
+                                        Clicked="LearnMoreBtnClicked"
+                                        BackgroundColor="#66e0d6">
+                                </Button>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

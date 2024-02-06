@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Hotell567.MVVM.LoginPage"
+             Title="LoginPage"
+             BackgroundColor="{DynamicResource PrimaryBackground}">
+
+    <VerticalStackLayout VerticalOptions="Center">
+
+        <Border Stroke="{DynamicResource DarkTextColor}"
+                StrokeThickness="2"
+                Background="#abebe3"
+                Padding="25,0,25,25"
+                HorizontalOptions="Center"
+                WidthRequest="420"
+                HeightRequest="550">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="5" />
+            </Border.StrokeShape>
+
+            <VerticalStackLayout VerticalOptions="Center" Spacing="20">
+                <Label Text="Login to Your Account"
+                       Style="{DynamicResource MediumLabel}"
+                       HorizontalOptions="Start"
+                       Padding="5"
+                       HorizontalTextAlignment="Start"
+                       x:Name="loginBoxTitle"/>
+
+                <Entry x:Name="emailEntry"
+                       Placeholder="Email" 
+                       Style="{DynamicResource BaseEntryStyle}"
+                       IsVisible="False"/>
+
+                <Entry x:Name="usernameEntry"
+                       Placeholder="Username" 
+                       Style="{DynamicResource BaseEntryStyle}"
+                       WidthRequest="330"/>
+
+                <Entry x:Name="passwordEntry"
+                       Placeholder="Password" 
+                       Style="{DynamicResource BaseEntryStyle}"
+                       WidthRequest="330"
+                       IsPassword="True"/>
+
+                <Button Text="Login"
+                        x:Name="loginBtn"
+                        Clicked="LoginBtnClicked"
+                        FontSize="16"
+                        WidthRequest="160"
+                        HorizontalOptions="Start"
+                        Style="{DynamicResource BaseButtonStyle}"
+                        BackgroundColor="{DynamicResource Secondary}"/>
+
+                <Button Text="Register an Account"
+                        x:Name="registerStartingBtn"
+                        Clicked="StartRegisteringBtnClicked"
+                        BackgroundColor="White"
+                        FontSize="16"
+                        HorizontalOptions="Start"
+                        Style="{DynamicResource MicroLabel}"/>
+
+                <Button Text="Register"
+                        x:Name="registerBtn"
+                        Clicked="RegisterBtnClicked"
+                        Style="{DynamicResource SmallButtonStyle}"
+                        IsVisible="False"
+                        TranslationX="8"/>
+
+            </VerticalStackLayout>
+        </Border>
+
+    </VerticalStackLayout>
+
+</ContentPage>

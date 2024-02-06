@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:Hotell567.Models"
+             xmlns:mvvm="clr-namespace:Hotell567.MVVM"
+             x:Class="Hotell567.MVVM.AccountSettings"
+             x:DataType="mvvm:AccountSettings"
+             Title="AccountSettings"
+             BackgroundColor="{DynamicResource PrimaryBackground}">
+
+    <Frame Style="{DynamicResource BaseFrameStyle}" Margin="50">
+        <VerticalStackLayout>
+            <Label Text="Account Info" Style="{DynamicResource MediumLabel}"/>
+            <Grid ColumnDefinitions="300, 300"
+                  ColumnSpacing="20"
+                  Padding="10"
+                  HorizontalOptions="Center">
+
+                <Grid Grid.Column="0" 
+                      ColumnDefinitions="Auto, *"
+                      RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto"
+                      RowSpacing="20"
+                      ColumnSpacing="10">
+                    <Label Text="Username:" Style="{DynamicResource AccountLabel}" Grid.Column="0" Grid.Row="0"/>
+                    <Entry x:Name="Username" Text="" Style="{DynamicResource AccountEntryStyle}" Grid.Column="1" Grid.Row="0" />
+                    <Label Text="First name:" Style="{DynamicResource AccountLabel}" Grid.Column="0" Grid.Row="1"/>
+                    <Entry x:Name="FirstName" Text="" Style="{DynamicResource AccountEntryStyle}" Grid.Column="1" Grid.Row="1" />
+                    <Label Text="Email:" Style="{DynamicResource AccountLabel}" Grid.Column="0" Grid.Row="2"/>
+                    <Entry x:Name="Email" Text="" Style="{DynamicResource AccountEntryStyle}" Grid.Column="1" Grid.Row="2" />
+                    <Label Text="Address line 1:" Style="{DynamicResource AccountLabel}" Grid.Column="0" Grid.Row="3"/>
+                    <Entry x:Name="AddressLine1" Text="" Style="{DynamicResource AccountEntryStyle}" Grid.Column="1" Grid.Row="3" />
+                    <Label Text="City:" Style="{DynamicResource AccountLabel}" Grid.Column="0" Grid.Row="4"/>
+                    <Entry x:Name="City" Text="" Style="{DynamicResource AccountEntryStyle}" Grid.Column="1" Grid.Row="4" />
+                    <Label Text="Postal Code:" Style="{DynamicResource AccountLabel}" Grid.Column="0" Grid.Row="5"/>
+                    <Entry x:Name="PostalCode" Text="" Style="{DynamicResource AccountEntryStyle}" Grid.Column="1" Grid.Row="5" />
+
+                </Grid>
+
+                <Grid Grid.Column="1"  
+                      ColumnDefinitions="Auto, *"
+                      RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto"
+                      RowSpacing="20"
+                      ColumnSpacing="10">
+                    <Label Text="Password:" Style="{DynamicResource AccountLabel}" Grid.Column="0" Grid.Row="0" FontAttributes="Bold"/>
+                    <Entry x:Name="Password" Text="" IsPassword="True" Style="{DynamicResource AccountEntryStyle}" Grid.Column="1" Grid.Row="0" />
+                    <Label Text="Last name:" Style="{DynamicResource AccountLabel}" Grid.Column="0" Grid.Row="1"/>
+                    <Entry x:Name="LastName" Text="" Style="{DynamicResource AccountEntryStyle}" Grid.Column="1" Grid.Row="1" />
+                    <Label Text="Phone:" Style="{DynamicResource AccountLabel}" Grid.Column="0" Grid.Row="2"/>
+                    <Entry x:Name="PhoneNumber" Text="" Style="{DynamicResource AccountEntryStyle}" Grid.Column="1" Grid.Row="2" />
+                    <Label Text="Address line 2:" Style="{DynamicResource AccountLabel}" Grid.Column="0" Grid.Row="3"/>
+                    <Entry x:Name="AddressLine2" Text="" Style="{DynamicResource AccountEntryStyle}" Grid.Column="1" Grid.Row="3" />
+                    <Label Text="State:" Style="{DynamicResource AccountLabel}" Grid.Column="0" Grid.Row="4"/>
+                    <Entry x:Name="State" Text="" Style="{DynamicResource AccountEntryStyle}" Grid.Column="1" Grid.Row="4" />
+                    <Label Text="Country:" Style="{DynamicResource AccountLabel}" Grid.Column="0" Grid.Row="5"/>
+                    <Entry x:Name="Country" Text="" Style="{DynamicResource AccountEntryStyle}" Grid.Column="1" Grid.Row="5" />
+                </Grid>
+            </Grid>
+            <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                <Button Text="Reset" Style="{DynamicResource BaseButtonStyle}" Clicked="ResetBtnClicked"/>
+                <Button Text="Save" Style="{DynamicResource BaseButtonStyle}" Clicked="SaveBtnClicked" />
+            </HorizontalStackLayout>
+            <Button Text="Log out" Style="{DynamicResource BaseButtonStyle}" Clicked="LogOutBtnClicked" HorizontalOptions="Center" Margin="10"/>
+        </VerticalStackLayout>
+    </Frame>
+
+
+    
+</ContentPage>

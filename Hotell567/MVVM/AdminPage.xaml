@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="Hotell567.MVVM.AdminPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:Hotell567.Models"
+             xmlns:mvvm="using:Hotell567.MVVM"
+             x:DataType="mvvm:AdminPage"
+             Title="AdminPage"
+             BackgroundColor="{DynamicResource PrimaryBackground}">
+
+    <Frame Style="{DynamicResource BaseFrameStyle}" WidthRequest="1500" MaximumHeightRequest="550">
+        <Grid ColumnDefinitions="700, *"
+          ColumnSpacing="0"
+          RowDefinitions="Auto, *"
+          RowSpacing="10"
+          Margin="0, 0, 0, 0"
+          HorizontalOptions="Center">
+
+            <Button Text="Search reservations" 
+                Command="{Binding GetReservationsCommand}"
+                Style="{DynamicResource BaseButtonStyle}"
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="10"
+                WidthRequest="240"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+
+            <CollectionView
+            Grid.Row="1"
+            Grid.RowSpan="1"
+            Grid.Column="0"
+            ItemsSource="{Binding Reservations}"
+            SelectionMode="Single"
+            Margin="0,0,0,0">
+                <CollectionView.ItemTemplate >
+                    <DataTemplate x:DataType="models:Reservation">
+                        <Grid Padding="10" HeightRequest="200" >
+                            <Frame HeightRequest="180" Style="{DynamicResource BaseFrameStyle}" VerticalOptions="Start">
+                                <Grid Padding="0" ColumnDefinitions="*,300">
+                                    <VerticalStackLayout
+                                    Grid.Column="0"
+                                    Padding="10"
+                                    VerticalOptions="Fill">
+                                        <Label Style="{DynamicResource MediumLabel}" 
+                                               Text="{Binding res_id}"
+                                               HorizontalOptions="Start"
+                                               FontAttributes="Bold"/>
+                                        <Label Style="{DynamicResource SmallLabel}" 
+                                               Text="{Binding res_room_id, StringFormat='Room id: {0}'}" />
+                                        <Label Style="{DynamicResource SmallLabel}"
+                                               Text="{Binding res_total_price, StringFormat='Total reservation cost: {0}€' }"
+                                               Padding="0, 0, 0, 0"
+                                               VerticalOptions="End"/>
+                                        <Label Style="{DynamicResource SmallLabel}"
+                                               Text="{Binding res_check_in_date.Date, StringFormat='Check-in: {0}'}"/>
+                                        <Label Style="{DynamicResource SmallLabel}"
+                                               Text="{Binding res_check_out_date.Date, StringFormat='Check-out: {0}'}"/>
+                                    </VerticalStackLayout>
+                                    <Button 
+                                        Style="{DynamicResource BaseButtonStyle}"
+                                        x:Name="SeeUserInfoBtn"
+                                        Grid.Column="1"
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="Fill"
+                                        Text="{Binding res_user_id, StringFormat='Click to see User {0} details'}"
+                                        Clicked="SelectUser">
+                                    </Button>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <HorizontalStackLayout Grid.Row="0"
+                               Grid.Column="1">
+
+                <Button Text="Search rooms" 
+                    Command="{Binding GetRoomsCommand}"
+                    Style="{DynamicResource BaseButtonStyle}"
+                    Margin="10"
+                    WidthRequest="240"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
+
+                <Button Text="Add room"
+                    Style="{DynamicResource BaseButtonStyle}"
+                    Clicked="AddRoomBtnClicked"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    WidthRequest="240"
+                    Margin="10"/>
+            </HorizontalStackLayout>
+
+            <ListView ItemsSource="{Binding Rooms}"
+                  Grid.Column="1"
+                  Grid.Row="1"
+                  HorizontalOptions="Fill">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Room">
+                        <ViewCell>
+                            <HorizontalStackLayout HorizontalOptions="Fill">
+                                <VerticalStackLayout Padding="10">
+                                    <Label Style="{DynamicResource SmallLabel}" Text="{Binding room_id, StringFormat='Id: {0}'}" FontAttributes="Bold"/>
+                                    <Label Style="{DynamicResource SmallLabel}" Text="{Binding room_number, StringFormat='Room number: {0}'}"/>
+                                    <Label Style="{DynamicResource SmallLabel}" Text="{Binding room_type, StringFormat='Type: {0}'}" />
+                                    <Label Style="{DynamicResource SmallLabel}" Text="{Binding room_price_per_night, StringFormat='Price per night: {0}€'}" />
+                                </VerticalStackLayout>
+                                <VerticalStackLayout HorizontalOptions="End" Padding="10" VerticalOptions="Center">
+                                    <Button Text="Delete" Style="{DynamicResource BaseButtonStyle}" VerticalOptions="Center" Clicked="DeleteRoomBtnClicked"/>
+                                </VerticalStackLayout>
+                            </HorizontalStackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </Frame>
+</ContentPage>

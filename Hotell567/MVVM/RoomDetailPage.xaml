@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Hotell567.MVVM.RoomDetailPage"
+             xmlns:data="clr-namespace:Hotell567.Data"
+             BackgroundColor="{DynamicResource PrimaryBackground}"
+             x:DataType="data:RoomDetailViewModel"
+             Title="{Binding Room.room_type, StringFormat='{0} room'}">
+    <VerticalStackLayout VerticalOptions="Center">
+        <Grid ColumnDefinitions="550, *">
+
+            <Frame
+                Style="{DynamicResource BaseFrameStyle}"
+                HeightRequest="600"
+                WidthRequest="500">
+                <Image Aspect="Fill"
+                       Source="{Binding Room.room_image_name, StringFormat='{0}'}"/>
+            </Frame>
+
+            <Grid Grid.Column="1" ColumnDefinitions="*, *">
+                <VerticalStackLayout Padding="15" 
+                                     Spacing="15"
+                                     Grid.Column="0">
+                    <Label Style="{DynamicResource LargeLabel}" 
+                           FontAttributes="Bold"
+                           Text="{Binding Room.room_type}" 
+                           VerticalOptions="Start"
+                           HorizontalOptions="Start"/>
+
+                    
+
+                    <Label Style="{DynamicResource SmallLabel}"
+                           Text="Bed amount: 0"
+                           x:Name="BedAmountLabel"/>
+
+                    <Label Style="{DynamicResource SmallLabel}" 
+                           Text="{Binding Room.room_price_per_night, StringFormat='Average cost per night: {0}€'}" />
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Padding="30" 
+                                     Spacing="10"
+                                     Grid.Column="1">
+                    <Border Style="{DynamicResource BaseBorderStyle}"
+                            VerticalOptions="Center"
+                            HeightRequest="500">
+                        <VerticalStackLayout VerticalOptions="Fill" Padding="30" Spacing="10">
+                            <Label Text="Book"
+                                   FontSize="48"
+                                   Style="{DynamicResource MediumLabel}"/>
+                            <Label Text="Dates"
+                                   Style="{DynamicResource MediumLabel}"
+                                   HorizontalOptions="Start"
+                                   FontSize="40"/>
+
+                            <Grid ColumnDefinitions="Auto, Auto, *" 
+                                  HorizontalOptions="Fill" 
+                                  ColumnSpacing="10"
+                                  Margin="0, 0, 0, 10">
+                                <DatePicker x:Name="CheckInDate"
+                                            Grid.Column="0"
+                                            Style="{DynamicResource BaseDatePickerStyle}"
+                                            HorizontalOptions="Fill"
+                                            FontSize="25"
+                                            PropertyChanged="CheckInDateChanged"/>
+
+                                <Label Style="{DynamicResource MediumLabel}" Text="--" Grid.Column="1"/>
+
+                                <DatePicker x:Name="CheckOutDate"
+                                            Grid.Column="2"
+                                            Style="{DynamicResource BaseDatePickerStyle}"
+                                            HorizontalOptions="Fill"
+                                            FontSize="25"
+                                            PropertyChanged="CheckOutDateChanged"/>
+                            </Grid>
+
+                            <Label x:Name="NumberOfNightsText"
+                                   Text="Number of nights: "
+                                   Style="{DynamicResource SmallLabel}"
+                                   HorizontalOptions="Start"/>
+                            <Label x:Name="ExpectedPriceText"
+                                   Text="Expected price: "
+                                   Style="{DynamicResource SmallLabel}"
+                                   HorizontalOptions="Start"/>
+
+                            <Button Text="Book"
+                                    Style="{DynamicResource BaseButtonStyle}"
+                                    Clicked="BookBtnClicked"
+                                    VerticalOptions="End"
+                                    Margin="0, 100, 0, 0"
+                                    BackgroundColor="#66e0d6"/>
+
+                        </VerticalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+            </Grid>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>
